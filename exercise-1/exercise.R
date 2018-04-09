@@ -26,4 +26,3 @@ opp_names <- c("Packers", "49ers", "Titans", "Colts")
 rownames(my_data) <-opp_names
 
 # View your data frame to see how it has changed!
-
