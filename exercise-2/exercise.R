@@ -26,38 +26,38 @@ salaries$change <- salaries_2018 - salaries_2017
 
 # Create a column 'got_raise' that is TRUE if the person got a raise (their
 # salary went up)
-salaries%got_raise <- salaries$change > 0
+salaries$got_raise <- salaries$change > 0
 
 ### Retrieve values from your data frame to answer the following questions
 ### Note that you should get the value as specific as possible (e.g., a single
 ### cell rather than the whole row!)
 
 # What was the 2018 salary of employee 57
-salaries%got_raise <- salaries
+salary_57 <- salaries[salaries$employees == "Employee 57", "salaries_2018"]
 
 # How many employees got a raise?
-
+nrow(salaries[salaries$got.raise == TRUE, ])
 
 # What was the dollar value of the highest raise?
-
+highest_raise <- max(salaries$change)
 
 # What was the "name" of the employee who received the highest raise?
-
+got_biggest_raise <- salaries[salaries$change == highest_raise, "employees"]
 
 # What was the largest decrease in salaries between the two years?
-
+biggest_paycut <- min(salaries$change)
 
 # What was the name of the employee who recieved largest decrease in salary?
-
+got_biggest_paycut <- salaries[salaries$change == biggest_paycut, "employees"]
 
 # What was the average salary change?
-
+avg_increase <- mean(salaries$change)
 
 # For people who did not get a raise, how much money did they lose on average?
-
+avg_loss <- mean(salaries$change[salaries$got_raise == FALSE])
 
 ## Consider: do the above averages match what you expected them to be based on 
 ## how you generated the salaries?
 
 # Write a .csv file of your salary data to your working directory
-
+write.csv(salaries, 'salaries.csv')
